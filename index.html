@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeSector | Bespoke Software Architecture for Alternative Investments</title>
+  <meta name="description" content="Custom CRM, Cashflow Management, Forecasting, Fundraising, Investor Portals, and Dealflow Workflows engineered for Private Equity, Venture Capital, Real Estate, and Private Credit." />
+
+  <!-- Google Fonts: Plus Jakarta Sans, Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: {
+              950: '#091224',
+              900: '#0F172A',
+              800: '#1E293B',
+              700: '#334155',
+            },
+            brand: {
+              50: '#F0F9FF',
+              100: '#E0F2FE',
+              200: '#BAE6FD',
+              300: '#7DD3FC',
+              400: '#38BDF8',
+              500: '#0EA5E9',
+              600: '#0284C7',
+              700: '#0369A1',
+              800: '#075985',
+              900: '#0C4A6E',
+            },
+            royal: {
+              800: '#1E40AF',
+              900: '#1E3A8A',
+            }
+          },
+          boxShadow: {
+            'glow-blue': '0 10px 30px -8px rgba(2, 132, 199, 0.35)',
+            'card-elevated': '0 20px 45px -15px rgba(15, 23, 42, 0.06)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Subtle architectural grid background */
+    .bg-grid-blue {
+      background-size: 44px 44px;
+      background-image: 
+        linear-gradient(to right, rgba(2, 132, 199, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(2, 132, 199, 0.06) 1px, transparent 1px);
+    }
+    .bg-grid-light {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+    }
+
+    /* Custom range slider styling for light-blue financial sandbox */
+    input[type="range"].fintech-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #CBD5E1;
+      border-radius: 9999px;
+      outline: none;
+    }
+    input[type="range"].fintech-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #0284C7;
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.25);
+      cursor: pointer;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+    input[type="range"].fintech-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.12);
+      background: #0EA5E9;
+    }
+    input[type="range"].fintech-slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #0284C7;
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.25);
+      cursor: pointer;
+    }
+
+    /* Custom scrollbar inside sandbox */
+    .sandbox-scroll::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .sandbox-scroll::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    .sandbox-scroll::-webkit-scrollbar-thumb {
+      background: #94A3B8;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] text-slate-900 antialiased selection:bg-brand-600 selection:text-white overflow-x-hidden">
+
+  <!-- ===================================================================== -->
+  <!-- 1. STICKY GLASSMORPHIC NAVIGATION BAR (LIGHT-BLUE INSTITUTIONAL)      -->
+  <!-- ===================================================================== -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-sky-100 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Brand Logo -->
+        <a href="#" class="flex items-center gap-3 group focus:outline-none">
+          <!-- Custom Interlocking Architectural Cube / Sector Emblem -->
+          <div class="relative flex items-center justify-center w-10 h-10 rounded-xl bg-brand-50 border border-brand-200 shadow-sm group-hover:border-brand-500 transition-colors">
+            <svg class="w-6 h-6" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Outer Isometric Hexagon / Architectural Sector -->
+              <path d="M16 3L27.2583 9.5V22.5L16 29L4.74167 22.5V9.5L16 3Z" stroke="#94A3B8" stroke-width="1.8" />
+              <!-- Top Sky-Blue Sector Plane -->
+              <path d="M16 3L27.2583 9.5L16 16L4.74167 9.5L16 3Z" fill="#38BDF8" fill-opacity="0.28" stroke="#0284C7" stroke-width="1.8" stroke-linejoin="round"/>
+              <!-- Right Midnight Navy Facet -->
+              <path d="M16 16L27.2583 9.5V22.5L16 29V16Z" fill="#0F172A" stroke="#0284C7" stroke-width="1.8" stroke-linejoin="round"/>
+              <!-- Left Sapphire Facet -->
+              <path d="M16 16L4.74167 9.5V22.5L16 29" fill="#0284C7" fill-opacity="0.14" stroke="#0284C7" stroke-width="1.8" stroke-linejoin="round"/>
+              <!-- Inner Luminous Core Node -->
+              <circle cx="16" cy="16" r="2.75" fill="#38BDF8" stroke="#FFFFFF" stroke-width="1" />
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-extrabold text-xl tracking-tight text-obsidian-900 leading-none">
+              Code<span class="text-brand-600">Sector</span>
+            </span>
+            <span class="font-mono text-[10px] tracking-[0.18em] text-brand-700 uppercase mt-1">
+              Private Markets Tech
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-600">
+          <a href="#capabilities" class="hover:text-brand-600 transition-colors py-2">Capabilities</a>
+          <a href="#modules" class="hover:text-brand-600 transition-colors py-2">Platform Modules</a>
+          <a href="#sandbox" class="hover:text-brand-600 transition-colors py-2 flex items-center gap-1.5 font-semibold text-brand-700">
+            <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+            Interactive Demo
+          </a>
+          <a href="#why-codesector" class="hover:text-brand-600 transition-colors py-2">Why CodeSector</a>
+          <a href="#contact" class="hover:text-brand-600 transition-colors py-2">Contact</a>
+        </nav>
+
+        <!-- Desktop Primary CTA -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a href="#contact" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm shadow-glow-blue transition-all duration-200">
+            <span>Schedule Architecture Call</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" type="button" aria-label="Toggle navigation menu" class="lg:hidden inline-flex items-center justify-center p-2.5 rounded-xl text-slate-700 hover:text-brand-600 hover:bg-brand-50 border border-slate-200 focus:outline-none">
+          <svg id="menuIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menuIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-sky-100 px-4 pt-3 pb-6 space-y-2 shadow-lg">
+      <a href="#capabilities" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">Capabilities</a>
+      <a href="#modules" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">Platform Modules</a>
+      <a href="#sandbox" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-brand-700 bg-brand-50 border border-brand-200">Interactive Module Demo</a>
+      <a href="#why-codesector" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">Why CodeSector</a>
+      <a href="#contact" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">Contact</a>
+      <div class="pt-2">
+        <a href="#contact" class="mobile-nav-link flex items-center justify-center w-full px-5 py-3.5 rounded-xl bg-brand-600 text-white font-semibold text-sm shadow-glow-blue">
+          Schedule Architecture Call
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 2. HERO SECTION (BRIGHT INSTITUTIONAL LIGHT-BLUE & SKY ARCHITECTURE)  -->
+  <!-- ===================================================================== -->
+  <section id="capabilities" class="relative bg-gradient-to-b from-[#EFF6FF] via-[#F8FAFC] to-white text-slate-900 overflow-hidden border-b border-sky-100">
+    <!-- Subtle Architectural Grid & Ambient Sky Glow -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <div class="absolute inset-0 bg-grid-blue"></div>
+      <div class="absolute -top-24 right-1/4 w-[680px] h-[380px] bg-sky-300/25 blur-[120px] rounded-full"></div>
+      <div class="absolute top-32 -left-24 w-[460px] h-[320px] bg-blue-300/20 blur-[110px] rounded-full"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-7 space-y-7">
+          <!-- Eyebrow Badge -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-brand-100/90 border border-brand-200 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-brand-600"></span>
+            <span class="font-mono text-xs font-semibold tracking-[0.14em] text-brand-700 uppercase">
+              Engineering for Private Markets &amp; Alternative Assets
+            </span>
+          </div>
+
+          <!-- Main Headline -->
+          <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-[3.45rem] tracking-tight text-obsidian-900 leading-[1.1]">
+            Bespoke Software Architecture for
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-brand-500 to-royal-900">
+              Alternative Investment Firms
+            </span>
+          </h1>
+
+          <!-- Subheadline -->
+          <p class="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl">
+            CodeSector architects and delivers mission-critical, SOC 2-ready custom platforms for <strong class="text-obsidian-900 font-semibold">Private Equity, Venture Capital, Real Estate, Private Credit, and Family Offices</strong>—eliminating rigid off-the-shelf SaaS bottlenecks and fragile spreadsheet operations.
+          </p>
+
+          <!-- Asset Class Pills -->
+          <div class="flex flex-wrap items-center gap-2 pt-1">
+            <span class="px-3 py-1 rounded-lg bg-white border border-sky-200/90 text-xs font-semibold text-brand-800 shadow-xs">Private Equity</span>
+            <span class="px-3 py-1 rounded-lg bg-white border border-sky-200/90 text-xs font-semibold text-brand-800 shadow-xs">Venture Capital</span>
+            <span class="px-3 py-1 rounded-lg bg-white border border-sky-200/90 text-xs font-semibold text-brand-800 shadow-xs">Real Estate Funds</span>
+            <span class="px-3 py-1 rounded-lg bg-white border border-sky-200/90 text-xs font-semibold text-brand-800 shadow-xs">Private Credit</span>
+            <span class="px-3 py-1 rounded-lg bg-white border border-sky-200/90 text-xs font-semibold text-brand-800 shadow-xs">Multi-Family Offices</span>
+          </div>
+
+          <!-- Dual CTAs -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <a href="#sandbox" class="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-base shadow-glow-blue transition-all">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Explore Interactive Module Demo</span>
+            </a>
+
+            <a href="#contact" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white hover:bg-brand-50 text-obsidian-900 font-semibold text-base border border-slate-300 hover:border-brand-300 shadow-xs transition-all">
+              <span>Book Technical Consultation</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Architectural Executive Visual Card (Light-Blue Glassmorphism) -->
+        <div class="lg:col-span-5">
+          <div class="relative rounded-2xl bg-white/90 border border-brand-200/90 p-4 sm:p-5 shadow-[0_24px_60px_-15px_rgba(2,132,199,0.18)] backdrop-blur-md">
+            <!-- Top Bar inside preview card -->
+            <div class="flex items-center justify-between pb-3.5 mb-3.5 border-b border-sky-100">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-brand-500"></span>
+                <span class="font-mono text-xs text-slate-700 font-semibold">FUND_OS // CORE_ENGINE_v4.2</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded-md bg-brand-100 text-brand-700 font-semibold border border-brand-200">
+                SOC 2 TYPE II READY
+              </span>
+            </div>
+
+            <!-- High-res Daylight Glass & Sky Financial Architecture Image -->
+            <div class="relative rounded-xl overflow-hidden aspect-[16/10] mb-4 border border-sky-100">
+              <img
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x500/E0F2FE/0369A1?text=Institutional+Architecture';"
+                alt="Daylight blue-glass financial district skyscrapers"
+                class="w-full h-full object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-obsidian-900/85 via-obsidian-900/25 to-sky-500/10"></div>
+              <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-2">
+                <div>
+                  <p class="font-mono text-[11px] uppercase tracking-wider text-sky-300">Unified Data Fabric</p>
+                  <p class="text-sm font-semibold text-white">LP Portal &bull; Waterfall &bull; General Ledger</p>
+                </div>
+                <span class="font-mono text-xs bg-white/95 text-brand-700 font-bold border border-brand-200 px-2.5 py-1 rounded-lg shadow-sm">
+                  100% IP Owned
+                </span>
+              </div>
+            </div>
+
+            <!-- Live Mini Architecture Stack Metrics -->
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-3.5 rounded-xl bg-brand-50/75 border border-brand-200/80">
+                <div class="text-xs text-slate-600 font-medium mb-1">Waterfall Calculation</div>
+                <div class="font-mono text-base font-bold text-obsidian-900 flex items-center justify-between">
+                  <span>European / Deal</span>
+                  <span class="text-xs text-brand-600 font-bold">&lt;14ms</span>
+                </div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-brand-50/75 border border-brand-200/80">
+                <div class="text-xs text-slate-600 font-medium mb-1">ERP / GL Sync</div>
+                <div class="font-mono text-base font-bold text-obsidian-900 flex items-center justify-between">
+                  <span>NetSuite &amp; Intacct</span>
+                  <span class="text-xs text-royal-800 font-bold">Real-time</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Institutional Trust Strip -->
+      <div class="mt-16 pt-10 border-t border-sky-200/70 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div class="p-4 rounded-2xl bg-white border border-sky-100 shadow-xs">
+          <div class="font-mono text-2xl sm:text-3xl font-bold text-obsidian-900">$45B+</div>
+          <div class="text-sm text-slate-600 mt-1">Client AUM Supported Across Custom Platforms</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-sky-100 shadow-xs">
+          <div class="font-mono text-2xl sm:text-3xl font-bold text-brand-600">99.98%</div>
+          <div class="text-sm text-slate-600 mt-1">Production Uptime SLA for LP &amp; GP Portals</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-sky-100 shadow-xs">
+          <div class="font-mono text-2xl sm:text-3xl font-bold text-obsidian-900">AES-256</div>
+          <div class="text-sm text-slate-600 mt-1">Bank-Grade Encryption &amp; Field-Level Audit Logs</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-white border border-sky-100 shadow-xs">
+          <div class="font-mono text-2xl sm:text-3xl font-bold text-royal-800">0% Lock-In</div>
+          <div class="text-sm text-slate-600 mt-1">Full Source Code &amp; Intellectual Property Ownership</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 3. CORE DEVELOPED MODULES GRID (6 INTERACTIVE CARDS)                  -->
+  <!-- ===================================================================== -->
+  <section id="modules" class="py-20 lg:py-28 bg-[#F8FAFC] bg-grid-light border-b border-sky-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 border border-brand-200 text-brand-700 font-mono text-xs font-semibold uppercase tracking-wider mb-4">
+          Battle-Tested Domain Modules
+        </div>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-[2.65rem] text-obsidian-900 tracking-tight leading-tight">
+          Pre-Architected Core Modules, Tailored to Your Fund Structure
+        </h2>
+        <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+          We accelerate delivery by combining proven private-markets architectural blueprints with bespoke engineering—adapting every entity hierarchy, waterfall tier, and approval rule to your exact operating model.
+        </p>
+      </div>
+
+      <!-- 6 Module Cards Grid -->
+      <div class="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        
+        <!-- Module 1: Investor & Deal CRM -->
+        <article class="group bg-white rounded-2xl p-7 border border-slate-200/90 shadow-card-elevated hover:border-brand-500 hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shadow-xs group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <span class="font-mono text-xs font-semibold text-slate-400">MOD // 01</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-obsidian-900 mb-2.5">Investor &amp; Deal CRM</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-5">
+              Purpose-built relationship intelligence mapping complex LP parent-subsidiary entities, co-investment appetites, consultant ties, and historical commitments across vintages.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 space-y-2">
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+              Multi-entity LP &amp; feeder vehicle hierarchy
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+              Automated KYC/AML &amp; accreditation tracking
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+              Outlook/Exchange &amp; meeting note sync
+            </div>
+          </div>
+        </article>
+
+        <!-- Module 2: Cashflow Management -->
+        <article class="group bg-white rounded-2xl p-7 border border-slate-200/90 shadow-card-elevated hover:border-brand-500 hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shadow-xs group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <span class="font-mono text-xs font-semibold text-slate-400">MOD // 02</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-obsidian-900 mb-2.5">Cashflow Management</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-5">
+              Precision treasury and capital ledger automation handling complex capital calls, multi-tier European/American waterfalls, preferred returns, and side-letter fee rebates.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 space-y-2">
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+              Automated capital call &amp; distribution notices
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+              Custom carried interest &amp; hurdle waterfall engine
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+              Equalization &amp; subsequent close adjustments
+            </div>
+          </div>
+        </article>
+
+        <!-- Module 3: Cashflow Forecasting -->
+        <article class="group bg-white rounded-2xl p-7 border border-slate-200/90 shadow-card-elevated hover:border-brand-500 hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-xl bg-brand-100 text-royal-800 flex items-center justify-center shadow-xs group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                </svg>
+              </div>
+              <span class="font-mono text-xs font-semibold text-brand-700 bg-brand-100 border border-brand-200 px-2.5 py-0.5 rounded">LIVE IN DEMO</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-obsidian-900 mb-2.5">Cashflow Forecasting</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-5">
+              Dynamic J-curve modeling, commitment pacing, and liquidity stress-testing across bull, base, and downside scenarios for CFOs and portfolio construction teams.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 space-y-2">
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-royal-800"></span>
+              Multi-scenario J-curve &amp; NAV projections
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-royal-800"></span>
+              Credit facility &amp; subscription line modeling
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-royal-800"></span>
+              Real-time Net IRR, TVPI &amp; DPI simulation
+            </div>
+          </div>
+        </article>
+
+        <!-- Module 4: Fundraising & Capital Raising -->
+        <article class="group bg-white rounded-2xl p-7 border border-slate-200/90 shadow-card-elevated hover:border-brand-500 hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shadow-xs group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <span class="font-mono text-xs font-semibold text-slate-400">MOD // 04</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-obsidian-900 mb-2.5">Fundraising &amp; Capital Raising</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-5">
+              End-to-end digital fundraising orchestration from soft-circle pipeline management and watermarked virtual data rooms to automated subscription booklet execution.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 space-y-2">
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+              Probability-weighted soft-circle pipeline
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+              Dynamic subscription doc &amp; e-signature flows
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+              VDR engagement heatmaps &amp; audit trails
+            </div>
+          </div>
+        </article>
+
+        <!-- Module 5: White-Label Investor Portals -->
+        <article class="group bg-white rounded-2xl p-7 border border-slate-200/90 shadow-card-elevated hover:border-brand-500 hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shadow-xs group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <span class="font-mono text-xs font-semibold text-slate-400">MOD // 05</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-obsidian-900 mb-2.5">White-Label Investor Portals</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-5">
+              Institutional-grade, custom-branded LP dashboards offering real-time capital account statements, interactive asset breakdowns, and encrypted K-1 tax document vaults.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 space-y-2">
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+              Granular SSO, MFA &amp; advisor/auditor permissions
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+              Bulk K-1 / tax package watermarks &amp; distribution
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+              Interactive LP capital account &amp; NAV views
+            </div>
+          </div>
+        </article>
+
+        <!-- Module 6: Dealflow & System Workflows -->
+        <article class="group bg-white rounded-2xl p-7 border border-slate-200/90 shadow-card-elevated hover:border-brand-500 hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-xl bg-brand-100 text-royal-800 flex items-center justify-center shadow-xs group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                </svg>
+              </div>
+              <span class="font-mono text-xs font-semibold text-brand-700 bg-brand-100 border border-brand-200 px-2.5 py-0.5 rounded">LIVE IN DEMO</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-obsidian-900 mb-2.5">Dealflow &amp; System Workflows</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-5">
+              Configurable stage-gate deal pipelines, Investment Committee (IC) voting sign-offs, and event-driven system workflows bridging front-office teams with back-office accounting.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 space-y-2">
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-royal-800"></span>
+              IC voting packets &amp; compliance stage-gates
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-royal-800"></span>
+              Automated portfolio company KPI ingestion
+            </div>
+            <div class="flex items-center gap-2 text-xs font-medium text-slate-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-royal-800"></span>
+              Bi-directional ERP / General Ledger webhooks
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 4. INTERACTIVE LIVE MODULE MOCKUP SHOWCASE (LIGHT-BLUE TERMINAL)      -->
+  <!-- ===================================================================== -->
+  <section id="sandbox" class="py-20 lg:py-28 bg-gradient-to-b from-[#EFF6FF] via-[#F0F9FF] to-[#F8FAFC] text-slate-900 relative overflow-hidden border-b border-sky-200/80">
+    <div class="absolute inset-0 bg-grid-blue opacity-70 pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Heading -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+        <div class="max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-brand-200 text-brand-700 font-mono text-xs font-semibold uppercase tracking-wider mb-4 shadow-xs">
+            <span class="w-2 h-2 rounded-full bg-brand-600 animate-ping"></span>
+            Interactive Architecture Sandbox
+          </div>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-obsidian-900 tracking-tight">
+            Test-Drive Our Production Modules
+          </h2>
+          <p class="mt-3 text-slate-600 text-base sm:text-lg">
+            Interact directly with a live frontend simulation of two core CodeSector modules: our <span class="text-obsidian-900 font-semibold">Cashflow Forecasting &amp; J-Curve Engine</span> and our <span class="text-obsidian-900 font-semibold">Dealflow &amp; IC Workflow Orchestrator</span>.
+          </p>
+        </div>
+
+        <!-- Module Switcher Tabs -->
+        <div class="inline-flex p-1.5 rounded-2xl bg-white border border-sky-200 shadow-sm self-start lg:self-auto" role="tablist">
+          <button id="tabBtnCashflow" type="button" role="tab" aria-selected="true"
+            class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-brand-600 text-white shadow-sm flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+            </svg>
+            <span>Cashflow Forecasting &amp; J-Curve</span>
+          </button>
+          <button id="tabBtnDealflow" type="button" role="tab" aria-selected="false"
+            class="px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-700 flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+            <span>Dealflow &amp; IC Workflow</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Realistic Browser / Light-Blue Enterprise Application Frame -->
+      <div class="rounded-2xl bg-white border border-sky-200/90 shadow-[0_28px_70px_-15px_rgba(15,23,42,0.12)] overflow-hidden">
+        
+        <!-- Top Window Chrome Bar -->
+        <div class="bg-brand-50/90 border-b border-sky-200/80 px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-rose-400"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+            <span class="w-3 h-3 rounded-full bg-sky-500"></span>
+            <div class="ml-3 hidden sm:flex items-center gap-2 px-3 py-1 rounded-lg bg-white border border-sky-200 font-mono text-xs text-slate-600 shadow-2xs">
+              <svg class="w-3.5 h-3.5 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              <span id="sandboxUrlText">https://portal.meridian-capital.internal/modules/cashflow-forecast</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 font-mono text-xs">
+            <span class="text-slate-600">Fund Entity: <strong class="text-obsidian-900">Meridian Buyout Fund IV, L.P.</strong></span>
+            <span class="hidden md:inline-block px-2.5 py-0.5 rounded bg-brand-100 text-brand-800 font-semibold border border-brand-200">USD ($M)</span>
+          </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- TAB 1: CASHFLOW FORECASTING & J-CURVE VIEW                      -->
+        <!-- =============================================================== -->
+        <div id="panelCashflow" class="p-5 sm:p-8 bg-white">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Parameter Controls Column -->
+            <div class="lg:col-span-4 space-y-6 bg-[#F8FAFC] p-5 sm:p-6 rounded-2xl border border-slate-200/90">
+              <div class="flex items-center justify-between border-b border-slate-200 pb-3.5">
+                <h3 class="font-display font-bold text-base text-obsidian-900">Model Assumptions</h3>
+                <button id="resetForecastBtn" type="button" class="font-mono text-xs font-semibold text-brand-600 hover:text-brand-700 underline underline-offset-4">
+                  Reset Defaults
+                </button>
+              </div>
+
+              <!-- Scenario Toggle -->
+              <div>
+                <label class="block text-xs font-mono font-semibold uppercase tracking-wider text-slate-600 mb-2.5">Stress Scenario</label>
+                <div class="grid grid-cols-3 gap-2 p-1 rounded-xl bg-slate-200/70 border border-slate-200">
+                  <button type="button" data-scenario="downside" class="scenario-btn py-2 px-2 rounded-lg text-xs font-semibold text-slate-600 hover:text-obsidian-900 transition-all">
+                    Downside
+                  </button>
+                  <button type="button" data-scenario="base" class="scenario-btn py-2 px-2 rounded-lg text-xs font-semibold bg-brand-600 text-white shadow-xs transition-all">
+                    Base Case
+                  </button>
+                  <button type="button" data-scenario="upside" class="scenario-btn py-2 px-2 rounded-lg text-xs font-semibold text-slate-600 hover:text-obsidian-900 transition-all">
+                    Upside
+                  </button>
+                </div>
+              </div>
+
+              <!-- Slider 1: Fund Size -->
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <label for="sliderFundSize" class="text-sm font-semibold text-slate-700">Committed Fund Size</label>
+                  <span id="valFundSize" class="font-mono text-sm font-bold text-brand-700">$500M</span>
+                </div>
+                <input id="sliderFundSize" type="range" min="100" max="1500" step="50" value="500" class="fintech-slider" />
+                <div class="flex justify-between font-mono text-[10px] text-slate-500 mt-1">
+                  <span>$100M</span>
+                  <span>$750M</span>
+                  <span>$1.5B</span>
+                </div>
+              </div>
+
+              <!-- Slider 2: Deployment Pace -->
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <label for="sliderPace" class="text-sm font-semibold text-slate-700">Investment Period Pace</label>
+                  <span id="valPace" class="font-mono text-sm font-bold text-brand-700">4 Years</span>
+                </div>
+                <input id="sliderPace" type="range" min="2" max="6" step="1" value="4" class="fintech-slider" />
+                <div class="flex justify-between font-mono text-[10px] text-slate-500 mt-1">
+                  <span>2 Yrs (Fast)</span>
+                  <span>4 Yrs</span>
+                  <span>6 Yrs (Slow)</span>
+                </div>
+              </div>
+
+              <!-- Slider 3: Target Net IRR -->
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <label for="sliderIrr" class="text-sm font-semibold text-slate-700">Target Gross Deal IRR</label>
+                  <span id="valIrr" class="font-mono text-sm font-bold text-royal-800">22.0%</span>
+                </div>
+                <input id="sliderIrr" type="range" min="10" max="35" step="1" value="22" class="fintech-slider" />
+                <div class="flex justify-between font-mono text-[10px] text-slate-500 mt-1">
+                  <span>10%</span>
+                  <span>22%</span>
+                  <span>35%</span>
+                </div>
+              </div>
+
+              <!-- Waterfall Assumptions Summary -->
+              <div class="p-3.5 rounded-xl bg-brand-50/90 border border-brand-200/80 text-xs text-slate-600 space-y-1.5 font-mono">
+                <div class="flex justify-between">
+                  <span>Mgmt Fee / Carry:</span>
+                  <span class="text-obsidian-900 font-semibold">2.0% / 20.0%</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Preferred Hurdle:</span>
+                  <span class="text-obsidian-900 font-semibold">8.0% Compounded</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Catch-Up Structure:</span>
+                  <span class="text-brand-700 font-bold">100% GP Catch-up</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right KPI Cards + Interactive SVG J-Curve Chart -->
+            <div class="lg:col-span-8 flex flex-col justify-between space-y-6">
+              
+              <!-- 4 Live KPI Output Cards -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+                <div class="p-4 rounded-xl bg-brand-50/70 border border-brand-200/80">
+                  <div class="text-xs text-slate-600 font-semibold">Projected Net IRR</div>
+                  <div id="kpiNetIrr" class="font-mono text-xl sm:text-2xl font-bold text-brand-700 mt-1">18.4%</div>
+                  <div id="kpiIrrDelta" class="font-mono text-[11px] text-slate-500 mt-0.5">After 2/20 waterfall</div>
+                </div>
+                <div class="p-4 rounded-xl bg-[#F8FAFC] border border-slate-200">
+                  <div class="text-xs text-slate-600 font-semibold">Projected TVPI</div>
+                  <div id="kpiTvpi" class="font-mono text-xl sm:text-2xl font-bold text-obsidian-900 mt-1">2.18x</div>
+                  <div class="font-mono text-[11px] text-slate-500 mt-0.5">Total Value / Paid-In</div>
+                </div>
+                <div class="p-4 rounded-xl bg-[#F8FAFC] border border-slate-200">
+                  <div class="text-xs text-slate-600 font-semibold">Year 7 DPI</div>
+                  <div id="kpiDpi" class="font-mono text-xl sm:text-2xl font-bold text-royal-800 mt-1">1.24x</div>
+                  <div class="font-mono text-[11px] text-slate-500 mt-0.5">Distributed / Paid-In</div>
+                </div>
+                <div class="p-4 rounded-xl bg-[#F8FAFC] border border-slate-200">
+                  <div class="text-xs text-slate-600 font-semibold">Peak Net Outflow</div>
+                  <div id="kpiPeakOutflow" class="font-mono text-xl sm:text-2xl font-bold text-rose-600 mt-1">-$342M</div>
+                  <div id="kpiBreakevenYear" class="font-mono text-[11px] text-slate-500 mt-0.5">Breakeven: Year 6</div>
+                </div>
+              </div>
+
+              <!-- Interactive Chart Container -->
+              <div class="bg-[#F8FAFC] rounded-2xl border border-slate-200 p-4 sm:p-6 flex-1 flex flex-col justify-between">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <div>
+                    <h4 class="font-display font-bold text-sm sm:text-base text-obsidian-900">10-Year Cashflow Pacing &amp; Cumulative J-Curve ($M)</h4>
+                    <p class="text-xs text-slate-600">Hover or tap any year bar to inspect exact capital calls, distributions &amp; net cumulative position</p>
+                  </div>
+                  <!-- Legend -->
+                  <div class="flex flex-wrap items-center gap-4 text-xs font-mono">
+                    <span class="flex items-center gap-1.5 text-slate-700 font-medium">
+                      <span class="w-3 h-3 rounded-sm bg-slate-400 inline-block"></span> Capital Calls
+                    </span>
+                    <span class="flex items-center gap-1.5 text-slate-700 font-medium">
+                      <span class="w-3 h-3 rounded-sm bg-brand-500 inline-block"></span> Distributions
+                    </span>
+                    <span class="flex items-center gap-1.5 text-royal-900 font-semibold">
+                      <span class="w-3 h-0.5 bg-royal-800 inline-block"></span> Net J-Curve
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Dynamic Tooltip Bar -->
+                <div id="chartInspectorBar" class="mb-3 px-3.5 py-2 rounded-xl bg-white border border-sky-200 flex flex-wrap items-center justify-between gap-2 font-mono text-xs shadow-2xs">
+                  <span class="text-slate-600">Selected Horizon: <strong id="inspYear" class="text-obsidian-900">Year 5</strong></span>
+                  <div class="flex flex-wrap items-center gap-4">
+                    <span class="text-slate-700">Calls: <strong id="inspCall" class="text-slate-900">-$55.0M</strong></span>
+                    <span class="text-brand-700">Distributions: <strong id="inspDist">+$92.0M</strong></span>
+                    <span class="text-royal-800">Cumulative Net: <strong id="inspNet">-$248.0M</strong></span>
+                  </div>
+                </div>
+
+                <!-- Responsive SVG Chart -->
+                <div class="w-full overflow-x-auto sandbox-scroll bg-white rounded-xl border border-slate-200/80 p-2">
+                  <svg id="jCurveSvg" viewBox="0 0 760 280" class="w-full min-w-[540px] h-auto select-none" role="img" aria-label="10-Year Fund Cashflow and J-Curve Chart">
+                    <!-- Rendered dynamically via JavaScript -->
+                  </svg>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- TAB 2: DEALFLOW & IC WORKFLOW ORCHESTRATOR VIEW                 -->
+        <!-- =============================================================== -->
+        <div id="panelDealflow" class="hidden p-5 sm:p-8 bg-white">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-slate-200">
+            <div>
+              <h3 class="font-display font-bold text-lg text-obsidian-900">Active Investment Pipeline &amp; Automated IC Stage-Gates</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-0.5">
+                Click <strong class="text-brand-700">"Advance Stage &rarr;"</strong> on any deal card to trigger automated compliance checks, IC voting notifications, and GL reserve updates.
+              </p>
+            </div>
+            <div class="flex items-center gap-3 font-mono text-xs">
+              <div class="px-3 py-2 rounded-xl bg-brand-50 border border-brand-200 text-slate-700">
+                Pipeline Volume: <strong id="pipelineTotalVolume" class="text-brand-700">$415.0M</strong>
+              </div>
+              <button id="resetDealsBtn" type="button" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold border border-slate-200 transition-colors">
+                Reset Pipeline
+              </button>
+            </div>
+          </div>
+
+          <!-- Toast / Event Audit Log Banner -->
+          <div id="workflowEventBanner" class="mb-6 px-4 py-3 rounded-xl bg-brand-50 border border-brand-200 flex items-center justify-between gap-3 font-mono text-xs text-brand-800">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-brand-600"></span>
+              <span id="workflowEventText">SYSTEM_READY // All KYC/AML &amp; Investment Committee stage-gate webhooks active.</span>
+            </div>
+            <span class="text-slate-500 hidden sm:inline">AUDIT_ID: #CS-8841</span>
+          </div>
+
+          <!-- 4-Column Kanban Pipeline -->
+          <div id="kanbanBoard" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+            <!-- Columns rendered dynamically via JS -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 5. WHY CUSTOM ENGINEERING OVER OFF-THE-SHELF SAAS                     -->
+  <!-- ===================================================================== -->
+  <section id="why-codesector" class="py-20 lg:py-28 bg-white border-b border-sky-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+        
+        <!-- Left Architectural Boardroom Image + Metrics Overlay -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl border border-sky-200/80 aspect-[4/5]">
+            <img
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80"
+              onerror="this.onerror=null;this.src='https://placehold.co/800x1000/E0F2FE/0F172A?text=Executive+Architecture';"
+              alt="Modern institutional executive architectural office"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-obsidian-900/35 to-sky-500/10"></div>
+            <div class="absolute bottom-6 left-6 right-6 text-white space-y-3">
+              <div class="inline-block px-3 py-1 rounded-lg bg-brand-500 text-white font-mono text-xs font-bold shadow-sm">
+                ENTERPRISE ARCHITECTURE
+              </div>
+              <p class="font-display font-bold text-xl leading-snug">
+                “Generic fund SaaS forces your investment team into rigid templates. We engineer software around your exact fund structures.”
+              </p>
+              <div class="pt-2 border-t border-white/20 flex items-center justify-between font-mono text-xs text-sky-100">
+                <span>Full Source Code Handover</span>
+                <span class="text-sky-300 font-semibold">Zero Per-Seat Tax</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Comparison & Strategic Advantages -->
+        <div class="lg:col-span-7 space-y-8">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 border border-brand-200 text-brand-700 font-mono text-xs font-semibold uppercase tracking-wider mb-4">
+              Why CodeSector vs. Off-the-Shelf SaaS
+            </div>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-obsidian-900 tracking-tight leading-tight">
+              Built for Complex Waterfalls, Bespoke Side Letters &amp; Institutional Scale
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+              As alternative asset managers scale past multiple funds, co-investment SPVs, and cross-border feeders, off-the-shelf tools break down—forcing analysts back into error-prone Excel workarounds.
+            </p>
+          </div>
+
+          <!-- 3 Core Pillars -->
+          <div class="space-y-4">
+            <div class="p-5 rounded-2xl bg-[#F8FAFC] border border-slate-200/90 flex gap-4">
+              <div class="w-11 h-11 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-lg text-obsidian-900">100% IP Ownership &amp; Zero Vendor Lock-In</h3>
+                <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                  You own the entire codebase, database schema, and cloud infrastructure deployed in your own AWS or Azure tenant—creating durable enterprise valuation without escalating SaaS seat licenses.
+                </p>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-[#F8FAFC] border border-slate-200/90 flex gap-4">
+              <div class="w-11 h-11 rounded-xl bg-sky-100 text-royal-800 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-lg text-obsidian-900">Native ERP, General Ledger &amp; Administrator Integrations</h3>
+                <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                  Bi-directional API connectors engineered for NetSuite, Sage Intacct, Allvue, eFront, Investran, DocuSign, and banking custody feeds—eliminating manual CSV re-keying.
+                </p>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-[#F8FAFC] border border-slate-200/90 flex gap-4">
+              <div class="w-11 h-11 rounded-xl bg-obsidian-900 text-sky-300 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-lg text-obsidian-900">Exact Waterfall &amp; Side-Letter Math</h3>
+                <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                  Whether you run deal-by-deal carry with clawbacks, hybrid hurdles, or bespoke MFN side-letter discounts, we codify and unit-test your exact LPA formulas down to the basis point.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Compact Comparison Table -->
+          <div class="overflow-x-auto rounded-2xl border border-sky-200/80 shadow-xs">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="bg-obsidian-900 text-white font-mono text-xs uppercase">
+                  <th class="py-3.5 px-4">Capability</th>
+                  <th class="py-3.5 px-4 text-sky-300">CodeSector Bespoke</th>
+                  <th class="py-3.5 px-4 text-slate-400">Generic Off-the-Shelf SaaS</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 bg-white">
+                <tr>
+                  <td class="py-3 px-4 font-medium text-obsidian-900">Custom Waterfall &amp; Side Letters</td>
+                  <td class="py-3 px-4 text-brand-700 font-semibold">Native to your exact LPA</td>
+                  <td class="py-3 px-4 text-slate-500">Rigid templates / Excel exports</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-medium text-obsidian-900">Source Code &amp; Data Hosting</td>
+                  <td class="py-3 px-4 text-brand-700 font-semibold">100% Owned in Your Cloud</td>
+                  <td class="py-3 px-4 text-slate-500">Multi-tenant vendor lock-in</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-medium text-obsidian-900">GL / Fund Admin Integration</td>
+                  <td class="py-3 px-4 text-brand-700 font-semibold">Custom Real-Time Webhooks</td>
+                  <td class="py-3 px-4 text-slate-500">Paid add-on / batch CSV sync</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 6. ENTERPRISE CONTACT & CONSULTATION FORM SECTION (SOFT SKY TINT)     -->
+  <!-- ===================================================================== -->
+  <section id="contact" class="py-20 lg:py-28 bg-gradient-to-b from-[#EFF6FF] to-[#F8FAFC] bg-grid-blue">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left Advisory & Engagement Process -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 border border-brand-200 text-brand-700 font-mono text-xs font-semibold uppercase tracking-wider">
+            Initiate Architecture Discovery
+          </div>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-obsidian-900 tracking-tight leading-tight">
+            Discuss Your Firm’s Platform Roadmap
+          </h2>
+          <p class="text-slate-600 text-base leading-relaxed">
+            Speak directly with a CodeSector Principal Solutions Architect—not a junior sales rep. We sign mutual NDAs prior to reviewing LPA structures, existing ERPs, or workflow bottlenecks.
+          </p>
+
+          <!-- Engagement Steps -->
+          <div class="space-y-4 pt-2">
+            <div class="flex items-start gap-3.5">
+              <span class="w-7 h-7 rounded-lg bg-brand-600 text-white font-mono text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 shadow-xs">01</span>
+              <div>
+                <h4 class="font-bold text-obsidian-900 text-sm">Technical &amp; Domain Discovery (45 Min)</h4>
+                <p class="text-xs text-slate-600 mt-0.5">Review your fund entities, reporting bottlenecks, and target integrations.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3.5">
+              <span class="w-7 h-7 rounded-lg bg-brand-600 text-white font-mono text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 shadow-xs">02</span>
+              <div>
+                <h4 class="font-bold text-obsidian-900 text-sm">System Blueprint &amp; Fixed-Milestone Proposal</h4>
+                <p class="text-xs text-slate-600 mt-0.5">Receive a clear architectural diagram, security posture spec, and phased delivery timeline.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3.5">
+              <span class="w-7 h-7 rounded-lg bg-brand-600 text-white font-mono text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 shadow-xs">03</span>
+              <div>
+                <h4 class="font-bold text-obsidian-900 text-sm">Iterative Delivery &amp; Data Migration</h4>
+                <p class="text-xs text-slate-600 mt-0.5">Bi-weekly production demos with automated reconciliation against historical fund ledgers.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct Contact Box -->
+          <div class="p-5 rounded-2xl bg-white text-slate-800 space-y-2.5 border border-sky-200 shadow-xs">
+            <div class="font-mono text-xs text-brand-700 font-bold uppercase tracking-wider">Direct Institutional Desk</div>
+            <div class="text-sm text-slate-600">Email: <span class="text-obsidian-900 font-semibold font-mono">architecture@codesector.io</span></div>
+            <div class="text-sm text-slate-600">Coverage: <span class="text-obsidian-900 font-medium">New York &bull; London &bull; Zurich &bull; Singapore</span></div>
+          </div>
+        </div>
+
+        <!-- Right Interactive Consultation Form -->
+        <div class="lg:col-span-7">
+          <div class="bg-white rounded-2xl p-6 sm:p-10 border border-sky-200/90 shadow-card-elevated">
+            
+            <!-- Form Container -->
+            <form id="consultationForm" novalidate class="space-y-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <!-- Full Name -->
+                <div>
+                  <label for="fullName" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                    Full Name <span class="text-rose-500">*</span>
+                  </label>
+                  <input id="fullName" name="fullName" type="text" required placeholder="e.g., Victoria Sterling"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" />
+                  <p id="errFullName" class="hidden text-xs text-rose-600 mt-1.5 font-medium">Please enter your full name.</p>
+                </div>
+
+                <!-- Work Email -->
+                <div>
+                  <label for="workEmail" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                    Institutional Work Email <span class="text-rose-500">*</span>
+                  </label>
+                  <input id="workEmail" name="workEmail" type="email" required placeholder="v.sterling@meridiancap.com"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" />
+                  <p id="errWorkEmail" class="hidden text-xs text-rose-600 mt-1.5 font-medium">Please enter a valid work email address.</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <!-- Firm Name -->
+                <div>
+                  <label for="firmName" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                    Firm / Organization Name <span class="text-rose-500">*</span>
+                  </label>
+                  <input id="firmName" name="firmName" type="text" required placeholder="e.g., Meridian Capital Partners"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all" />
+                  <p id="errFirmName" class="hidden text-xs text-rose-600 mt-1.5 font-medium">Please enter your firm name.</p>
+                </div>
+
+                <!-- Firm Type -->
+                <div>
+                  <label for="firmType" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                    Firm Strategy / Type <span class="text-rose-500">*</span>
+                  </label>
+                  <select id="firmType" name="firmType" required
+                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all">
+                    <option value="">Select firm type...</option>
+                    <option value="Private Equity">Private Equity</option>
+                    <option value="Venture Capital">Venture Capital</option>
+                    <option value="Real Estate">Real Estate / Infrastructure</option>
+                    <option value="Private Credit">Private Credit / Direct Lending</option>
+                    <option value="Fund Administrator">Fund Administrator</option>
+                    <option value="Family Office">Single / Multi-Family Office</option>
+                  </select>
+                  <p id="errFirmType" class="hidden text-xs text-rose-600 mt-1.5 font-medium">Please select your firm type.</p>
+                </div>
+              </div>
+
+              <!-- Modules of Interest (Multi-select Checkboxes) -->
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2.5">
+                  Modules of Interest <span class="text-rose-500">*</span>
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
+                  <label class="flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-brand-500/60 cursor-pointer transition-colors">
+                    <input type="checkbox" name="modules" value="Investor & Deal CRM" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500 border-slate-300" />
+                    <span class="text-xs font-semibold text-slate-800">Investor &amp; Deal CRM</span>
+                  </label>
+                  <label class="flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-brand-500/60 cursor-pointer transition-colors">
+                    <input type="checkbox" name="modules" value="Cashflow Management" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500 border-slate-300" />
+                    <span class="text-xs font-semibold text-slate-800">Cashflow Mgmt</span>
+                  </label>
+                  <label class="flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-brand-500/60 cursor-pointer transition-colors">
+                    <input type="checkbox" name="modules" value="Cashflow Forecasting" checked class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500 border-slate-300" />
+                    <span class="text-xs font-semibold text-slate-800">Cashflow Forecasting</span>
+                  </label>
+                  <label class="flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-brand-500/60 cursor-pointer transition-colors">
+                    <input type="checkbox" name="modules" value="Fundraising Pipeline" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500 border-slate-300" />
+                    <span class="text-xs font-semibold text-slate-800">Fundraising &amp; VDR</span>
+                  </label>
+                  <label class="flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-brand-500/60 cursor-pointer transition-colors">
+                    <input type="checkbox" name="modules" value="Investor Portal" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500 border-slate-300" />
+                    <span class="text-xs font-semibold text-slate-800">Investor Portal</span>
+                  </label>
+                  <label class="flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-brand-500/60 cursor-pointer transition-colors">
+                    <input type="checkbox" name="modules" value="Dealflow & System Workflows" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500 border-slate-300" />
+                    <span class="text-xs font-semibold text-slate-800">Dealflow &amp; Workflows</span>
+                  </label>
+                </div>
+                <p id="errModules" class="hidden text-xs text-rose-600 mt-1.5 font-medium">Please select at least one module of interest.</p>
+              </div>
+
+              <!-- Project Scope / Notes -->
+              <div>
+                <label for="projectScope" class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                  Project Scope, Current Tech Stack &amp; Timeline
+                </label>
+                <textarea id="projectScope" name="projectScope" rows="3" placeholder="Tell us about your fund structure, current accounting/ERP tools (e.g., NetSuite, Intacct, Allvue), or specific workflow bottlenecks..."
+                  class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="pt-1">
+                <button type="submit" class="w-full py-4 px-6 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm sm:text-base shadow-glow-blue flex items-center justify-center gap-2.5 transition-all cursor-pointer">
+                  <span>Request Architecture Consultation &amp; NDA</span>
+                  <svg class="w-4 h-4 text-sky-200" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
+                <p class="text-[11px] text-slate-500 text-center mt-3">
+                  Protected by strict institutional confidentiality. Mutual NDA provided prior to technical architecture review.
+                </p>
+              </div>
+            </form>
+
+            <!-- Instant Confirmation State (Hidden until valid submission) -->
+            <div id="consultationConfirmation" class="hidden space-y-6 py-4">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center shrink-0">
+                  <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <span class="font-mono text-xs font-bold uppercase tracking-wider text-brand-700">Inquiry Logged &amp; Routed</span>
+                  <h3 class="font-display font-bold text-2xl text-obsidian-900">Architecture Consultation Requested</h3>
+                </div>
+              </div>
+
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Thank you, <strong id="confName" class="text-obsidian-900"></strong>. A CodeSector Principal Solutions Architect specializing in <strong id="confFirmType" class="text-obsidian-900"></strong> platforms has been assigned to <strong id="confFirmName" class="text-obsidian-900"></strong> and will follow up at <span id="confEmail" class="font-mono text-brand-700 underline"></span> within 4 business hours.
+              </p>
+
+              <!-- Summary Box -->
+              <div class="p-5 rounded-2xl bg-brand-50/90 text-obsidian-900 space-y-3 border border-brand-200">
+                <div class="flex items-center justify-between border-b border-brand-200/80 pb-2.5 font-mono text-xs">
+                  <span class="text-slate-600">DISCOVERY REFERENCE ID</span>
+                  <span id="confRefId" class="text-brand-700 font-bold">CS-2026-8492</span>
+                </div>
+                <div>
+                  <div class="font-mono text-[11px] text-slate-600 uppercase mb-2">Selected Platform Scope:</div>
+                  <div id="confModulesList" class="flex flex-wrap gap-2"></div>
+                </div>
+              </div>
+
+              <button id="newInquiryBtn" type="button" class="inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-600">
+                &larr; Submit another inquiry or modify selected modules
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 7. FOOTER (DEEP SLATE-NAVY GROUNDING WITH SKY-BLUE ACCENTS)           -->
+  <!-- ===================================================================== -->
+  <footer class="bg-obsidian-900 text-slate-400 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- Brand & Mission -->
+        <div class="lg:col-span-5 space-y-4">
+          <a href="#" class="inline-flex items-center gap-3">
+            <div class="flex items-center justify-center w-9 h-9 rounded-xl bg-slate-800/90 border border-brand-500/40">
+              <svg class="w-5 h-5" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M16 3L27.2583 9.5V22.5L16 29L4.74167 22.5V9.5L16 3Z" stroke="#475569" stroke-width="2" />
+                <path d="M16 3L27.2583 9.5L16 16L4.74167 9.5L16 3Z" fill="#38BDF8" fill-opacity="0.28" stroke="#38BDF8" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M16 16L27.2583 9.5V22.5L16 29V16Z" fill="#0F172A" stroke="#0284C7" stroke-width="1.8" stroke-linejoin="round"/>
+                <circle cx="16" cy="16" r="2.75" fill="#38BDF8" />
+              </svg>
+            </div>
+            <span class="font-display font-extrabold text-xl tracking-tight text-white">
+              Code<span class="text-brand-400">Sector</span>
+            </span>
+          </a>
+          <p class="text-sm text-slate-400 leading-relaxed max-w-md">
+            Custom software architecture and full-lifecycle product engineering exclusively for Private Equity, Venture Capital, Real Estate, Private Credit, and Institutional Asset Managers.
+          </p>
+          <!-- Security & Compliance Badges -->
+          <div class="flex flex-wrap items-center gap-2.5 pt-2 font-mono text-[11px]">
+            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-brand-500/30 text-brand-300">SOC 2 TYPE II READY</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-slate-300">ISO 27001 ALIGNED</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-slate-300">GDPR COMPLIANT</span>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="font-mono text-xs font-bold uppercase tracking-wider text-white">Platform Modules</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#modules" class="hover:text-brand-400 transition-colors">Investor &amp; Deal CRM</a></li>
+            <li><a href="#modules" class="hover:text-brand-400 transition-colors">Cashflow &amp; Waterfall Engine</a></li>
+            <li><a href="#sandbox" class="hover:text-brand-400 transition-colors">J-Curve Cashflow Forecasting</a></li>
+            <li><a href="#modules" class="hover:text-brand-400 transition-colors">White-Label Investor Portals</a></li>
+            <li><a href="#sandbox" class="hover:text-brand-400 transition-colors">Dealflow &amp; IC Workflows</a></li>
+          </ul>
+        </div>
+
+        <!-- Company Links -->
+        <div class="lg:col-span-4 space-y-3">
+          <h4 class="font-mono text-xs font-bold uppercase tracking-wider text-white">Architecture &amp; Governance</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#why-codesector" class="hover:text-brand-400 transition-colors">IP Ownership &amp; Cloud Deployment</a></li>
+            <li><a href="#why-codesector" class="hover:text-brand-400 transition-colors">ERP &amp; General Ledger Integrations</a></li>
+            <li><a href="#contact" class="hover:text-brand-400 transition-colors">Request Mutual NDA &amp; Discovery</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>&copy; <span id="currentYear">2026</span> CodeSector Engineering Ltd. All rights reserved.</p>
+        <p class="font-mono">Engineered for Institutional Private Markets</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT: INTERACTIVE SANDBOX, NAVIGATION & FORM VALIDATION         -->
+  <!-- ===================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set dynamic footer year
+      const yearEl = document.getElementById('currentYear');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // -------------------------------------------------------------------
+      // 1. MOBILE MENU TOGGLE
+      // -------------------------------------------------------------------
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuIconOpen = document.getElementById('menuIconOpen');
+      const menuIconClose = document.getElementById('menuIconClose');
+
+      function toggleMobileMenu(forceClose = false) {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (forceClose || !isHidden) {
+          mobileMenu.classList.add('hidden');
+          menuIconOpen.classList.remove('hidden');
+          menuIconClose.classList.add('hidden');
+        } else {
+          mobileMenu.classList.remove('hidden');
+          menuIconOpen.classList.add('hidden');
+          menuIconClose.classList.remove('hidden');
+        }
+      }
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => toggleMobileMenu(false));
+      }
+
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => toggleMobileMenu(true));
+      });
+
+      // -------------------------------------------------------------------
+      // 2. SANDBOX TAB SWITCHING (CASHFLOW VS. DEALFLOW WORKFLOWS)
+      // -------------------------------------------------------------------
+      const tabBtnCashflow = document.getElementById('tabBtnCashflow');
+      const tabBtnDealflow = document.getElementById('tabBtnDealflow');
+      const panelCashflow = document.getElementById('panelCashflow');
+      const panelDealflow = document.getElementById('panelDealflow');
+      const sandboxUrlText = document.getElementById('sandboxUrlText');
+
+      function activateTab(tabName) {
+        if (tabName === 'cashflow') {
+          panelCashflow.classList.remove('hidden');
+          panelDealflow.classList.add('hidden');
+
+          tabBtnCashflow.classList.add('bg-brand-600', 'text-white', 'shadow-sm');
+          tabBtnCashflow.classList.remove('text-slate-600');
+          tabBtnCashflow.setAttribute('aria-selected', 'true');
+
+          tabBtnDealflow.classList.remove('bg-brand-600', 'text-white', 'shadow-sm');
+          tabBtnDealflow.classList.add('text-slate-600');
+          tabBtnDealflow.setAttribute('aria-selected', 'false');
+
+          sandboxUrlText.textContent = 'https://portal.meridian-capital.internal/modules/cashflow-forecast';
+        } else {
+          panelDealflow.classList.remove('hidden');
+          panelCashflow.classList.add('hidden');
+
+          tabBtnDealflow.classList.add('bg-brand-600', 'text-white', 'shadow-sm');
+          tabBtnDealflow.classList.remove('text-slate-600');
+          tabBtnDealflow.setAttribute('aria-selected', 'true');
+
+          tabBtnCashflow.classList.remove('bg-brand-600', 'text-white', 'shadow-sm');
+          tabBtnCashflow.classList.add('text-slate-600');
+          tabBtnCashflow.setAttribute('aria-selected', 'false');
+
+          sandboxUrlText.textContent = 'https://portal.meridian-capital.internal/modules/dealflow-ic-workflows';
+        }
+      }
+
+      tabBtnCashflow.addEventListener('click', () => activateTab('cashflow'));
+      tabBtnDealflow.addEventListener('click', () => activateTab('dealflow'));
+
+      // -------------------------------------------------------------------
+      // 3. INTERACTIVE CASHFLOW FORECASTING & J-CURVE ENGINE (LIGHT-BLUE)
+      // -------------------------------------------------------------------
+      const sliderFundSize = document.getElementById('sliderFundSize');
+      const sliderPace = document.getElementById('sliderPace');
+      const sliderIrr = document.getElementById('sliderIrr');
+
+      const valFundSize = document.getElementById('valFundSize');
+      const valPace = document.getElementById('valPace');
+      const valIrr = document.getElementById('valIrr');
+
+      const kpiNetIrr = document.getElementById('kpiNetIrr');
+      const kpiTvpi = document.getElementById('kpiTvpi');
+      const kpiDpi = document.getElementById('kpiDpi');
+      const kpiPeakOutflow = document.getElementById('kpiPeakOutflow');
+      const kpiBreakevenYear = document.getElementById('kpiBreakevenYear');
+
+      const inspYear = document.getElementById('inspYear');
+      const inspCall = document.getElementById('inspCall');
+      const inspDist = document.getElementById('inspDist');
+      const inspNet = document.getElementById('inspNet');
+
+      const jCurveSvg = document.getElementById('jCurveSvg');
+      const scenarioBtns = document.querySelectorAll('.scenario-btn');
+      const resetForecastBtn = document.getElementById('resetForecastBtn');
+
+      let currentScenario = 'base'; // 'downside' | 'base' | 'upside'
+      let selectedYearIndex = 4; // Default inspect Year 5 (index 4)
+      let currentSeries = [];
+
+      function formatMillions(val) {
+        const abs = Math.abs(val).toFixed(1);
+        return val < 0 ? `-$${abs}M` : `+$${abs}M`;
+      }
+
+      function computeCashflowSeries() {
+        const fundSize = parseFloat(sliderFundSize.value); // $M
+        const paceYears = parseInt(sliderPace.value, 10); // 2 to 6 years
+        const grossIrr = parseFloat(sliderIrr.value) / 100; // e.g., 0.22
+
+        // Scenario adjustments
+        const scenarioConfig = {
+          downside: { irrMult: 0.68, exitDelay: 1, callDrag: 1.03 },
+          base:     { irrMult: 1.00, exitDelay: 0, callDrag: 1.00 },
+          upside:   { irrMult: 1.24, exitDelay: -0.5, callDrag: 0.98 }
+        }[currentScenario];
+
+        const effectiveGrossIrr = Math.max(0.04, grossIrr * scenarioConfig.irrMult);
+        // Approximate net IRR after 2% management fee & 20% carry
+        const netIrr = Math.max(0.02, effectiveGrossIrr * 0.82 - 0.014);
+
+        // Generate 10-year capital call pacing weights
+        const callWeights = [];
+        for (let y = 1; y <= 10; y++) {
+          if (y <= paceYears) {
+            // Front-loaded deployment across investment period
+            const weight = (paceYears - y + 1.5);
+            callWeights.push(weight);
+          } else if (y <= paceYears + 2) {
+            // Follow-on reserves & management fees
+            callWeights.push(0.35);
+          } else {
+            // Tail management fees
+            callWeights.push(0.08);
+          }
+        }
+        const totalCallWeight = callWeights.reduce((a, b) => a + b, 0);
+
+        // Target Total Value multiple driven by Net IRR and average hold duration (~4.5 yrs)
+        const avgHoldYears = 4.2 + (paceYears - 4) * 0.35 + scenarioConfig.exitDelay * 0.4;
+        const targetTvpi = Math.max(1.05, Math.pow(1 + netIrr, avgHoldYears));
+        const totalDistributionsTarget = fundSize * targetTvpi;
+
+        // Distribution bell-curve centered around Years 6-8
+        const distCenter = 6.8 + (paceYears - 4) * 0.45 + scenarioConfig.exitDelay * 0.6;
+        const distWeights = [];
+        for (let y = 1; y <= 10; y++) {
+          if (y <= 2) {
+            distWeights.push(0.01);
+          } else {
+            const spread = 1.9;
+            const w = Math.exp(-0.5 * Math.pow((y - distCenter) / spread, 2));
+            distWeights.push(w);
+          }
+        }
+        const totalDistWeight = distWeights.reduce((a, b) => a + b, 0);
+
+        let cumulativeNet = 0;
+        let cumulativeCalls = 0;
+        let cumulativeDist7 = 0;
+        let peakOutflow = 0;
+        let breakevenYear = null;
+
+        const series = [];
+        for (let i = 0; i < 10; i++) {
+          const year = i + 1;
+          const call = -1 * (fundSize * (callWeights[i] / totalCallWeight)) * scenarioConfig.callDrag;
+          const dist = totalDistributionsTarget * (distWeights[i] / totalDistWeight);
+
+          cumulativeCalls += Math.abs(call);
+          if (year <= 7) cumulativeDist7 += dist;
+
+          const prevCum = cumulativeNet;
+          cumulativeNet += (call + dist);
+
+          if (cumulativeNet < peakOutflow) {
+            peakOutflow = cumulativeNet;
+          }
+          if (prevCum < 0 && cumulativeNet >= 0 && breakevenYear === null) {
+            breakevenYear = year;
+          }
+
+          series.push({
+            year,
+            call,
+            dist,
+            cumulativeNet
+          });
+        }
+
+        const dpiYear7 = cumulativeDist7 / Math.max(1, cumulativeCalls * 0.85);
+
+        return {
+          series,
+          netIrr: (netIrr * 100).toFixed(1) + '%',
+          tvpi: targetTvpi.toFixed(2) + 'x',
+          dpi: dpiYear7.toFixed(2) + 'x',
+          peakOutflow: `-$${Math.abs(Math.round(peakOutflow))}M`,
+          breakevenYear: breakevenYear ? `Breakeven: Year ${breakevenYear}` : 'Breakeven: Year 10+'
+        };
+      }
+
+      function updateInspector(idx) {
+        selectedYearIndex = idx;
+        const item = currentSeries[idx];
+        if (!item) return;
+        inspYear.textContent = `Year ${item.year}`;
+        inspCall.textContent = formatMillions(item.call);
+        inspDist.textContent = formatMillions(item.dist);
+        inspNet.textContent = formatMillions(item.cumulativeNet);
+      }
+
+      function renderJCurveChart() {
+        // Update slider labels
+        valFundSize.textContent = `$${sliderFundSize.value}M`;
+        valPace.textContent = `${sliderPace.value} Years`;
+        valIrr.textContent = `${parseFloat(sliderIrr.value).toFixed(1)}%`;
+
+        const result = computeCashflowSeries();
+        currentSeries = result.series;
+
+        // Update KPI cards
+        kpiNetIrr.textContent = result.netIrr;
+        kpiTvpi.textContent = result.tvpi;
+        kpiDpi.textContent = result.dpi;
+        kpiPeakOutflow.textContent = result.peakOutflow;
+        kpiBreakevenYear.textContent = result.breakevenYear;
+
+        updateInspector(selectedYearIndex);
+
+        // SVG Dimensions
+        const width = 760;
+        const height = 280;
+        const padLeft = 58;
+        const padRight = 24;
+        const padTop = 22;
+        const padBottom = 34;
+
+        const plotW = width - padLeft - padRight;
+        const plotH = height - padTop - padBottom;
+
+        // Determine dynamic Y-axis domain across calls, distributions, and cumulative J-curve
+        let maxPos = 100;
+        let minNeg = -100;
+        currentSeries.forEach(d => {
+          if (d.dist > maxPos) maxPos = d.dist;
+          if (d.cumulativeNet > maxPos) maxPos = d.cumulativeNet;
+          if (d.call < minNeg) minNeg = d.call;
+          if (d.cumulativeNet < minNeg) minNeg = d.cumulativeNet;
+        });
+
+        // Add 15% breathing headroom
+        maxPos = Math.ceil((maxPos * 1.15) / 50) * 50;
+        minNeg = Math.floor((minNeg * 1.15) / 50) * 50;
+        const totalSpan = maxPos - minNeg;
+
+        const yScale = (val) => padTop + ((maxPos - val) / totalSpan) * plotH;
+        const zeroY = yScale(0);
+
+        const colWidth = plotW / 10;
+        const barW = Math.min(22, colWidth * 0.34);
+
+        let svgContent = '';
+        // Horizontal gridlines & Y-axis labels (Light-Blue Institutional Theme)
+        const gridTicks = [maxPos, maxPos / 2, 0, minNeg / 2, minNeg];
+        gridTicks.forEach(tick => {
+          const y = yScale(tick);
+          const isZero = Math.abs(tick) < 0.01;
+          svgContent += `
+            <line x1="${padLeft}" y1="${y.toFixed(1)}" x2="${width - padRight}" y2="${y.toFixed(1)}"
+              stroke="${isZero ? '#64748B' : '#E2E8F0'}"
+              stroke-width="${isZero ? '1.5' : '1'}"
+              ${isZero ? '' : 'stroke-dasharray="4 4"'} />
+            <text x="${padLeft - 10}" y="${(y + 4).toFixed(1)}" text-anchor="end"
+              fill="${isZero ? '#0F172A' : '#64748B'}" font-weight="${isZero ? '700' : '500'}"
+              font-family="JetBrains Mono, monospace" font-size="10">
+              ${tick === 0 ? '$0' : (tick > 0 ? '+$' + Math.round(tick) : '-$' + Math.abs(Math.round(tick)))}
+            </text>
+          `;
+        });
+
+        // Draw bars and hover hit zones for Years 1..10
+        const linePoints = [];
+        currentSeries.forEach((d, idx) => {
+          const centerX = padLeft + colWidth * idx + colWidth / 2;
+          const isSelected = idx === selectedYearIndex;
+
+          // Highlight column backdrop if selected
+          if (isSelected) {
+            svgContent += `
+              <rect x="${(padLeft + colWidth * idx + 3).toFixed(1)}" y="${padTop}"
+                width="${(colWidth - 6).toFixed(1)}" height="${plotH}" rx="8"
+                fill="#0EA5E9" fill-opacity="0.09" stroke="#0284C7" stroke-opacity="0.35" />
+            `;
+          }
+
+          // Distribution bar (positive, above zeroY) - Sapphire / Sky Blue
+          const distY = yScale(d.dist);
+          const distH = Math.max(2, zeroY - distY);
+          svgContent += `
+            <rect x="${(centerX - barW - 1.5).toFixed(1)}" y="${distY.toFixed(1)}"
+              width="${barW}" height="${distH.toFixed(1)}" rx="3"
+              fill="#0284C7" fill-opacity="${isSelected ? '1' : '0.82'}" />
+          `;
+
+          // Capital call bar (negative, below zeroY) - Cool Slate Steel
+          const callY = yScale(d.call);
+          const callH = Math.max(2, callY - zeroY);
+          svgContent += `
+            <rect x="${(centerX + 1.5).toFixed(1)}" y="${zeroY.toFixed(1)}"
+              width="${barW}" height="${callH.toFixed(1)}" rx="3"
+              fill="#64748B" fill-opacity="${isSelected ? '0.92' : '0.68'}" />
+          `;
+
+          // Year X-Axis Label
+          svgContent += `
+            <text x="${centerX.toFixed(1)}" y="${height - 10}" text-anchor="middle"
+              fill="${isSelected ? '#0284C7' : '#64748B'}" font-weight="${isSelected ? '700' : '500'}"
+              font-family="JetBrains Mono, monospace" font-size="11">
+              Y${d.year}
+            </text>
+          `;
+
+          linePoints.push({ x: centerX, y: yScale(d.cumulativeNet), idx });
+        });
+
+        // Cumulative J-Curve Polyline (Deep Royal Navy)
+        const pointsAttr = linePoints.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+        svgContent += `
+          <polyline fill="none" stroke="#1E3A8A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            points="${pointsAttr}" />
+        `;
+
+        // J-Curve Data Nodes + Interactive Transparent Hit Areas
+        linePoints.forEach(p => {
+          const isSelected = p.idx === selectedYearIndex;
+          svgContent += `
+            <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${isSelected ? '6' : '4'}"
+              fill="${isSelected ? '#0EA5E9' : '#FFFFFF'}" stroke="#1E3A8A" stroke-width="2.5" />
+            <rect x="${(padLeft + colWidth * p.idx).toFixed(1)}" y="${padTop}"
+              width="${colWidth.toFixed(1)}" height="${plotH + 24}" fill="transparent"
+              class="cursor-pointer chart-hit-col" data-year-idx="${p.idx}" />
+          `;
+        });
+
+        jCurveSvg.innerHTML = svgContent;
+
+        // Attach hover & click listeners to SVG columns
+        jCurveSvg.querySelectorAll('.chart-hit-col').forEach(rect => {
+          const handler = () => {
+            const idx = parseInt(rect.getAttribute('data-year-idx'), 10);
+            if (idx !== selectedYearIndex) {
+              selectedYearIndex = idx;
+              renderJCurveChart();
+            }
+          };
+          rect.addEventListener('mouseenter', handler);
+          rect.addEventListener('click', handler);
+        });
+      }
+
+      // Slider input listeners
+      [sliderFundSize, sliderPace, sliderIrr].forEach(slider => {
+        slider.addEventListener('input', renderJCurveChart);
+      });
+
+      // Scenario buttons
+      scenarioBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentScenario = btn.getAttribute('data-scenario');
+          scenarioBtns.forEach(b => {
+            b.classList.remove('bg-brand-600', 'text-white', 'shadow-xs');
+            b.classList.add('text-slate-600');
+          });
+          btn.classList.add('bg-brand-600', 'text-white', 'shadow-xs');
+          btn.classList.remove('text-slate-600');
+          renderJCurveChart();
+        });
+      });
+
+      // Reset forecast defaults
+      resetForecastBtn.addEventListener('click', () => {
+        sliderFundSize.value = 500;
+        sliderPace.value = 4;
+        sliderIrr.value = 22;
+        currentScenario = 'base';
+        selectedYearIndex = 4;
+        scenarioBtns.forEach(b => {
+          const isBase = b.getAttribute('data-scenario') === 'base';
+          b.classList.toggle('bg-brand-600', isBase);
+          b.classList.toggle('text-white', isBase);
+          b.classList.toggle('shadow-xs', isBase);
+          b.classList.toggle('text-slate-600', !isBase);
+        });
+        renderJCurveChart();
+      });
+
+      // Initial render of J-Curve chart
+      renderJCurveChart();
+
+      // -------------------------------------------------------------------
+      // 4. INTERACTIVE DEALFLOW & IC WORKFLOW KANBAN
+      // -------------------------------------------------------------------
+      const STAGES = ['Screening', 'Due Diligence', 'IC Approval', 'Closed'];
+
+      const initialDeals = [
+        {
+          id: 'DL-104',
+          name: 'Project Apex — Cold Chain Logistics',
+          sector: 'Real Assets / Industrial',
+          ticket: 85.0,
+          stageIndex: 1,
+          kycStatus: 'KYC Verified',
+          icVotes: '3 / 5 IC Votes',
+          lead: 'M. Vance'
+        },
+        {
+          id: 'DL-109',
+          name: 'Nordic FinOps SaaS Buyout',
+          sector: 'Enterprise Software',
+          ticket: 120.0,
+          stageIndex: 2,
+          kycStatus: 'AML Cleared',
+          icVotes: '4 / 5 IC Votes',
+          lead: 'E. Lindqvist'
+        },
+        {
+          id: 'DL-112',
+          name: 'Meridian Senior Unitranche Facility',
+          sector: 'Private Credit',
+          ticket: 65.0,
+          stageIndex: 0,
+          kycStatus: 'Entity Docs Pending',
+          icVotes: 'Awaiting DD',
+          lead: 'D. Chen'
+        },
+        {
+          id: 'DL-098',
+          name: 'Aether MedTech Growth Equity',
+          sector: 'Healthcare Tech',
+          ticket: 95.0,
+          stageIndex: 3,
+          kycStatus: 'GL Capital Call Queued',
+          icVotes: '5 / 5 Approved',
+          lead: 'S. Al-Mansoor'
+        },
+        {
+          id: 'DL-115',
+          name: 'Vanguard Grid Battery Storage',
+          sector: 'Energy Transition',
+          ticket: 50.0,
+          stageIndex: 1,
+          kycStatus: 'KYC Verified',
+          icVotes: '2 / 5 IC Votes',
+          lead: 'M. Vance'
+        }
+      ];
+
+      let dealsState = JSON.parse(JSON.stringify(initialDeals));
+      const kanbanBoard = document.getElementById('kanbanBoard');
+      const workflowEventText = document.getElementById('workflowEventText');
+      const resetDealsBtn = document.getElementById('resetDealsBtn');
+
+      function renderKanbanBoard() {
+        kanbanBoard.innerHTML = '';
+
+        STAGES.forEach((stageName, stageIdx) => {
+          const stageDeals = dealsState.filter(d => d.stageIndex === stageIdx);
+          const stageSum = stageDeals.reduce((acc, d) => acc + d.ticket, 0);
+
+          const colEl = document.createElement('div');
+          colEl.className = 'rounded-2xl bg-[#F8FAFC] border border-slate-200/90 p-4 flex flex-col gap-3.5 min-h-[340px]';
+
+          const badgeColor = stageIdx === 3
+            ? 'bg-brand-100 text-brand-800 border-brand-200'
+            : stageIdx === 2
+              ? 'bg-sky-100 text-royal-800 border-sky-200'
+              : 'bg-slate-200/80 text-slate-700 border-slate-300';
+
+          colEl.innerHTML = `
+            <div class="flex items-center justify-between pb-2.5 border-b border-slate-200">
+              <div class="flex items-center gap-2">
+                <span class="font-display font-bold text-sm text-obsidian-900">${stageName}</span>
+                <span class="font-mono text-xs font-semibold px-2 py-0.5 rounded-md border ${badgeColor}">${stageDeals.length}</span>
+              </div>
+              <span class="font-mono text-xs font-semibold text-slate-500">$${stageSum.toFixed(0)}M</span>
+            </div>
+            <div class="space-y-3 flex-1" data-stage-list="${stageIdx}"></div>
+          `;
+
+          const listContainer = colEl.querySelector(`[data-stage-list="${stageIdx}"]`);
+
+          if (stageDeals.length === 0) {
+            listContainer.innerHTML = `
+              <div class="h-28 rounded-xl border border-dashed border-slate-300 bg-white/60 flex items-center justify-center text-xs font-mono text-slate-400">
+                No deals in ${stageName}
+              </div>
+            `;
+          } else {
+            stageDeals.forEach(deal => {
+              const card = document.createElement('div');
+              card.className = 'p-4 rounded-xl bg-white border border-slate-200/90 hover:border-brand-400 shadow-2xs transition-all space-y-3';
+
+              const isFinal = deal.stageIndex >= STAGES.length - 1;
+
+              card.innerHTML = `
+                <div class="flex items-start justify-between gap-2">
+                  <span class="font-mono text-[11px] text-slate-500">${deal.id} &bull; ${deal.sector}</span>
+                  <span class="font-mono text-xs font-bold text-brand-700">$${deal.ticket.toFixed(1)}M</span>
+                </div>
+                <h4 class="font-display font-bold text-sm text-obsidian-900 leading-snug">${deal.name}</h4>
+                <div class="flex flex-wrap items-center gap-1.5 font-mono text-[11px]">
+                  <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">${deal.kycStatus}</span>
+                  <span class="px-2 py-0.5 rounded bg-brand-50 text-brand-800 border border-brand-200">${deal.icVotes}</span>
+                </div>
+                <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+                  <span class="text-[11px] text-slate-500">Lead: <strong class="text-slate-800">${deal.lead}</strong></span>
+                  ${isFinal
+                    ? `<span class="font-mono text-[11px] text-brand-700 font-bold">&#10003; Capital Wired</span>`
+                    : `<button type="button" data-advance-id="${deal.id}" class="advance-deal-btn font-mono text-xs font-semibold px-2.5 py-1 rounded-lg bg-brand-50 hover:bg-brand-600 text-brand-700 hover:text-white border border-brand-200 transition-colors cursor-pointer">
+                        Advance Stage &rarr;
+                      </button>`
+                  }
+                </div>
+              `;
+
+              listContainer.appendChild(card);
+            });
+          }
+
+          kanbanBoard.appendChild(colEl);
+        });
+
+        // Attach click events to Advance Stage buttons
+        kanbanBoard.querySelectorAll('.advance-deal-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const dealId = btn.getAttribute('data-advance-id');
+            const target = dealsState.find(d => d.id === dealId);
+            if (target && target.stageIndex < STAGES.length - 1) {
+              target.stageIndex += 1;
+              const newStage = STAGES[target.stageIndex];
+
+              if (target.stageIndex === 1) {
+                target.kycStatus = 'KYC Verified';
+                target.icVotes = '1 / 5 IC Votes';
+              } else if (target.stageIndex === 2) {
+                target.kycStatus = 'AML & Tax Cleared';
+                target.icVotes = '4 / 5 IC Votes';
+              } else if (target.stageIndex === 3) {
+                target.kycStatus = 'GL Capital Call Queued';
+                target.icVotes = '5 / 5 Approved';
+              }
+
+              workflowEventText.textContent = `WORKFLOW_TRIGGERED // ${target.id} (${target.name}) moved to [${newStage.toUpperCase()}] — Automated compliance & NetSuite webhook dispatched.`;
+              renderKanbanBoard();
+            }
+          });
+        });
+      }
+
+      resetDealsBtn.addEventListener('click', () => {
+        dealsState = JSON.parse(JSON.stringify(initialDeals));
+        workflowEventText.textContent = 'PIPELINE_RESET // Restored default institutional deal pipeline snapshot.';
+        renderKanbanBoard();
+      });
+
+      renderKanbanBoard();
+
+      // -------------------------------------------------------------------
+      // 5. ENTERPRISE CONSULTATION FORM VALIDATION & CONFIRMATION
+      // -------------------------------------------------------------------
+      const consultationForm = document.getElementById('consultationForm');
+      const consultationConfirmation = document.getElementById('consultationConfirmation');
+      const newInquiryBtn = document.getElementById('newInquiryBtn');
+
+      consultationForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const fullName = document.getElementById('fullName').value.trim();
+        const workEmail = document.getElementById('workEmail').value.trim();
+        const firmName = document.getElementById('firmName').value.trim();
+        const firmType = document.getElementById('firmType').value;
+        const checkedModules = Array.from(document.querySelectorAll('input[name="modules"]:checked')).map(cb => cb.value);
+
+        // Reset errors
+        const errFullName = document.getElementById('errFullName');
+        const errWorkEmail = document.getElementById('errWorkEmail');
+        const errFirmName = document.getElementById('errFirmName');
+        const errFirmType = document.getElementById('errFirmType');
+        const errModules = document.getElementById('errModules');
+
+        [errFullName, errWorkEmail, errFirmName, errFirmType, errModules].forEach(el => el.classList.add('hidden'));
+
+        let isValid = true;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!fullName) {
+          errFullName.classList.remove('hidden');
+          isValid = false;
+        }
+        if (!workEmail || !emailRegex.test(workEmail)) {
+          errWorkEmail.classList.remove('hidden');
+          isValid = false;
+        }
+        if (!firmName) {
+          errFirmName.classList.remove('hidden');
+          isValid = false;
+        }
+        if (!firmType) {
+          errFirmType.classList.remove('hidden');
+          isValid = false;
+        }
+        if (checkedModules.length === 0) {
+          errModules.classList.remove('hidden');
+          isValid = false;
+        }
+
+        if (!isValid) return;
+
+        // Populate confirmation details
+        document.getElementById('confName').textContent = fullName;
+        document.getElementById('confFirmType').textContent = firmType;
+        document.getElementById('confFirmName').textContent = firmName;
+        document.getElementById('confEmail').textContent = workEmail;
+
+        const randomCode = Math.floor(1000 + Math.random() * 9000);
+        document.getElementById('confRefId').textContent = `CS-2026-${randomCode}`;
+
+        const modulesContainer = document.getElementById('confModulesList');
+        modulesContainer.innerHTML = '';
+        checkedModules.forEach(mod => {
+          const badge = document.createElement('span');
+          badge.className = 'px-2.5 py-1 rounded-lg bg-white border border-brand-200 text-brand-800 font-mono text-xs font-semibold shadow-2xs';
+          badge.textContent = mod;
+          modulesContainer.appendChild(badge);
+        });
+
+        // Switch form to confirmation view
+        consultationForm.classList.add('hidden');
+        consultationConfirmation.classList.remove('hidden');
+      });
+
+      newInquiryBtn.addEventListener('click', () => {
+        consultationConfirmation.classList.add('hidden');
+        consultationForm.classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
